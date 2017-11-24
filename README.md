@@ -26,8 +26,8 @@ ESC when pressed alone is quite handy, specially in vi.
 ## Building
 
 ```
-$ git clone git@gitlab.com:interception/linux/tools.git
-$ cd tools
+$ git clone git@gitlab.com:interception/linux/plugins/caps2esc.git
+$ cd caps2esc
 $ mkdir build
 $ cd build
 $ cmake ..
