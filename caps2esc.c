@@ -66,6 +66,8 @@ int main(void) {
             if (!esc_give_up && input.value) {
                 esc_give_up = 1;
                 write_event(&ctrl_down);
+                write_event(&syn);
+                usleep(20000);
             }
         } else if (equal(&input, &capslock_down)) {
             capslock_is_down = 1;
