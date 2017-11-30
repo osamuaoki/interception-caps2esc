@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include <unistd.h>
 #include <linux/input.h>
 
 // clang-format off
@@ -13,7 +14,8 @@ ctrl_down       = {.type = EV_KEY, .code = KEY_LEFTCTRL, .value = 1},
 capslock_down   = {.type = EV_KEY, .code = KEY_CAPSLOCK, .value = 1},
 esc_repeat      = {.type = EV_KEY, .code = KEY_ESC,      .value = 2},
 ctrl_repeat     = {.type = EV_KEY, .code = KEY_LEFTCTRL, .value = 2},
-capslock_repeat = {.type = EV_KEY, .code = KEY_CAPSLOCK, .value = 2};
+capslock_repeat = {.type = EV_KEY, .code = KEY_CAPSLOCK, .value = 2},
+syn             = {.type = EV_SYN, .code = SYN_REPORT,   .value = 0};
 // clang-format on
 
 int equal(const struct input_event *first, const struct input_event *second) {
@@ -55,6 +57,8 @@ int main(void) {
                     continue;
                 }
                 write_event(&esc_down);
+                write_event(&syn);
+                usleep(20000);
                 write_event(&esc_up);
                 continue;
             }
