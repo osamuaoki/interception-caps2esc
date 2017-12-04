@@ -39,6 +39,9 @@ int main(void) {
     setbuf(stdin, NULL), setbuf(stdout, NULL);
 
     while (read_event(&input)) {
+        if (input.type == EV_MSC && input.code == MSC_SCAN)
+            continue;
+
         if (input.type != EV_KEY) {
             write_event(&input);
             continue;
