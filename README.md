@@ -34,6 +34,24 @@ $ cmake --build build
 
 ## Execution
 
+```
+caps2esc - transforming the most useless key ever in the most useful one
+
+usage: caps2esc [-h] [-m mode]
+
+options:
+    -h        show this message and exit
+    -m mode   0: default
+                - caps as esc/ctrl
+                - esc as caps
+              1: minimal
+                - caps as esc/ctrl
+              2: useful on 60% layouts
+                - caps as esc/ctrl
+                - esc as grave accent
+                - grave accent as caps
+```
+
 `caps2esc` is an [_Interception Tools_][interception-tools] plugin. A suggested
 `udevmon` job configuration is:
 
