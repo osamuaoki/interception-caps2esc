@@ -18,6 +18,28 @@ capslock_repeat = {.type = EV_KEY, .code = KEY_CAPSLOCK, .value = 2},
 syn             = {.type = EV_SYN, .code = SYN_REPORT,   .value = 0};
 // clang-format on
 
+void print_usage(FILE *stream, const char *program) {
+    // clang-format off
+    fprintf(stream,
+            "caps2esc - transforming the most useless key ever in the most useful one\n"
+            "\n"
+            "usage: %s [-h] [-m mode]\n"
+            "\n"
+            "options:\n"
+            "    -h        show this message and exit\n"
+            "    -m mode   0: default\n"
+            "                - caps as esc/ctrl\n"
+            "                - esc as caps\n"
+            "              1: minimal\n"
+            "                - caps as esc/ctrl\n"
+            "              2: useful on 60%% layouts\n"
+            "                - caps as esc/ctrl\n"
+            "                - esc as grave accent\n"
+            "                - grave accent as caps\n",
+            program);
+    // clang-format on
+}
+
 int equal(const struct input_event *first, const struct input_event *second) {
     return first->type == second->type && first->code == second->code &&
            first->value == second->value;
@@ -32,7 +54,20 @@ void write_event(const struct input_event *event) {
         exit(EXIT_FAILURE);
 }
 
-int main(void) {
+int main(int argc, char *argv[]) {
+    int opt, mode = 0;
+    while ((opt = getopt(argc, argv, "hm:")) != -1) {
+        switch (opt) {
+            case 'h':
+                return print_usage(stdout, argv[0]), EXIT_SUCCESS;
+            case 'm':
+                mode = optarg[0] - '0';
+                continue;
+        }
+
+        return print_usage(stderr, argv[0]), EXIT_FAILURE;
+    }
+
     int capslock_is_down = 0, esc_give_up = 0;
     struct input_event input;
 
@@ -77,8 +112,23 @@ int main(void) {
             continue;
         }
 
-        if (input.code == KEY_ESC)
-            input.code = KEY_CAPSLOCK;
+        switch (mode) {
+            case 0:
+                if (input.code == KEY_ESC)
+                    input.code = KEY_CAPSLOCK;
+                break;
+            case 2:
+                switch (input.code) {
+                    case KEY_ESC:
+                        input.code = KEY_GRAVE;
+                        break;
+                    case KEY_GRAVE:
+                        input.code = KEY_CAPSLOCK;
+                        break;
+                }
+                break;
+        }
+
         write_event(&input);
     }
 }
