@@ -28,10 +28,8 @@ ESC when pressed alone is quite handy, specially in vi.
 ```
 $ git clone git@gitlab.com:interception/linux/plugins/caps2esc.git
 $ cd caps2esc
-$ mkdir build
-$ cd build
-$ cmake ..
-$ make
+$ cmake -B build -DCMAKE_BUILD_TYPE=Release
+$ cmake --build build
 ```
 
 ## Execution
@@ -50,11 +48,37 @@ $ make
 For more information about the [_Interception Tools_][interception-tools], check
 the project's website.
 
+## Mouse button support
+
+After _Interception Tools_ 0.3, `caps2esc` can work with mouse clicks. An
+example configuration taken from my laptop:
+
+```yaml
+SHELL: [zsh, -c]
+---
+- JOB: mux -c caps2esc
+- JOB:
+    - intercept -g $DEVNODE | mux -o caps2esc
+    - mux -i caps2esc | caps2esc | uinput -d $DEVNODE
+  DEVICE:
+    LINK: /dev/input/by-path/platform-i8042-serio-0-event-kbd
+- JOB:
+    - intercept $DEVNODE | mux -o caps2esc
+  DEVICE:
+    LINK: /dev/input/by-path/platform-i8042-serio-4-event-mouse
+```
+
+For more information on the topic, check the [_Interception Tools_
+README][interception-tools] about usage of the `mux` tool and device specific
+setups.
+
 ## Installation
 
-I'm maintaining an Archlinux package on AUR:
+It's available from [community](https://archlinux.org/packages/community/x86_64/interception-caps2esc/):
 
-- <https://aur.archlinux.org/packages/interception-caps2esc>
+```
+$ pacman -S interception-caps2esc
+```
 
 I don't use Ubuntu and recommend Archlinux instead, as it provides the AUR, so I
 don't maintain PPAs. For more information on Ubuntu/Debian installation check
