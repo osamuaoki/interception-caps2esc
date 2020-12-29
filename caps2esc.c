@@ -6,11 +6,11 @@
 
 // clang-format off
 const struct input_event
-syn       = {.type = EV_SYN, .code = SYN_REPORT,   .value = 0},
-esc_up    = {.type = EV_KEY, .code = KEY_ESC,      .value = 0},
-ctrl_up   = {.type = EV_KEY, .code = KEY_LEFTCTRL, .value = 0},
-esc_down  = {.type = EV_KEY, .code = KEY_ESC,      .value = 1},
-ctrl_down = {.type = EV_KEY, .code = KEY_LEFTCTRL, .value = 1};
+syn       = {.type = EV_SYN , .code = SYN_REPORT   , .value = 0},
+esc_up    = {.type = EV_KEY , .code = KEY_ESC      , .value = 0},
+ctrl_up   = {.type = EV_KEY , .code = KEY_LEFTCTRL , .value = 0},
+esc_down  = {.type = EV_KEY , .code = KEY_ESC      , .value = 1},
+ctrl_down = {.type = EV_KEY , .code = KEY_LEFTCTRL , .value = 1};
 // clang-format on
 
 void print_usage(FILE *stream, const char *program) {
