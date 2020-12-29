@@ -67,9 +67,9 @@ options:
 For more information about the [_Interception Tools_][interception-tools], check
 the project's website.
 
-## Mouse button support
+## Mouse Support
 
-After _Interception Tools_ 0.3, `caps2esc` can work with mouse clicks. An
+After _Interception Tools_ 0.3.1, `caps2esc` can observe for mouse events. An
 example configuration taken from my laptop:
 
 ```yaml
