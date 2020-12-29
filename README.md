@@ -89,7 +89,7 @@ SHELL: [zsh, -c]
 
 For more information on the topic, check the [_Interception Tools_
 README][interception-tools] about usage of the `mux` tool and device specific
-setups and [this discussion][issue-9-note] for more examples.
+setups, and [this discussion][issue-9-note] for more examples.
 
 ## Installation
 
