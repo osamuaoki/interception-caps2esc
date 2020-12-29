@@ -37,19 +37,20 @@ $ cmake --build build
 ```
 caps2esc - transforming the most useless key ever in the most useful one
 
-usage: caps2esc [-h] [-m mode]
+usage: caps2esc [-h] [-m mode] [-t delay]
 
 options:
     -h        show this message and exit
+    -t        delay used for key sequences (default: 20000 microseconds)
     -m mode   0: default
-                - caps as esc/ctrl
-                - esc as caps
+                 - caps as esc/ctrl
+                 - esc as caps
               1: minimal
-                - caps as esc/ctrl
+                 - caps as esc/ctrl
               2: useful on 60% layouts
-                - caps as esc/ctrl
-                - esc as grave accent
-                - grave accent as caps
+                 - caps as esc/ctrl
+                 - esc as grave accent
+                 - grave accent as caps
 ```
 
 `caps2esc` is an [_Interception Tools_][interception-tools] plugin. A suggested
@@ -117,7 +118,7 @@ As always, there's always a caveat:
 I can't recall when I started using CAPSLOCK as both ESC and CTRL but it has
 been quite some time already. It started when I was on OS X where it was quite
 easy to achieve using the [Karabiner][], which already provides an option to
-turn CTRL into CTRL/ESC (which can be coupled with OS X system settings that
+turn CTRL into ESC/CTRL (which can be coupled with OS X system settings that
 turn CAPSLOCK into CTRL).
 
 Moving on, permanently making Linux my home, I searched and tweaked a similar
