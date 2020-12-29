@@ -46,6 +46,9 @@ void write_event(const struct input_event *event) {
 }
 
 void write_event_with_mode(struct input_event *event, int mode) {
+    if (event->type == EV_REL || event->type == EV_ABS)
+        return;
+
     switch (mode) {
         case 0:
             if (event->code == KEY_ESC)
@@ -91,20 +94,22 @@ int main(int argc, char *argv[]) {
         if (input.type == EV_MSC && input.code == MSC_SCAN)
             continue;
 
-        if (input.type != EV_KEY) {
+        if (input.type != EV_KEY && input.type != EV_REL &&
+            input.type != EV_ABS) {
             write_event(&input);
             continue;
         }
 
         switch (state) {
             case START:
-                if (input.code == KEY_CAPSLOCK && input.value)
+                if (input.type == EV_KEY && input.code == KEY_CAPSLOCK &&
+                    input.value)
                     state = CAPSLOCK_HELD;
                 else
                     write_event_with_mode(&input, mode);
                 break;
             case CAPSLOCK_HELD:
-                if (input.code == KEY_CAPSLOCK) {
+                if (input.type == EV_KEY && input.code == KEY_CAPSLOCK) {
                     if (input.value == 0) {
                         write_event(&esc_down);
                         write_event(&syn);
@@ -112,7 +117,8 @@ int main(int argc, char *argv[]) {
                         write_event(&esc_up);
                         state = START;
                     }
-                } else if (input.value == 1) {
+                } else if ((input.type == EV_KEY && input.value == 1) ||
+                           input.type == EV_REL || input.type == EV_ABS) {
                     write_event(&ctrl_down);
                     write_event(&syn);
                     usleep(delay);
@@ -122,7 +128,7 @@ int main(int argc, char *argv[]) {
                     write_event_with_mode(&input, mode);
                 break;
             case CAPSLOCK_IS_CTRL:
-                if (input.code == KEY_CAPSLOCK) {
+                if (input.type == EV_KEY && input.code == KEY_CAPSLOCK) {
                     input.code = KEY_LEFTCTRL;
                     write_event(&input);
                     if (input.value == 0)
