@@ -89,7 +89,7 @@ SHELL: [zsh, -c]
 
 For more information on the topic, check the [_Interception Tools_
 README][interception-tools] about usage of the `mux` tool and device specific
-setups.
+setups and [this discussion][issue-9-note] for more examples.
 
 ## Installation
 
@@ -156,4 +156,5 @@ Copyright © 2017 Francisco Lopes da Silva
 [x]: https://www.x.org
 [interception]: https://github.com/oblitum/Interception
 [interception-tools]: https://gitlab.com/interception/linux/tools
+[issue-9-note]: https://gitlab.com/interception/linux/plugins/caps2esc/-/issues/9#note_474942893
 [key-repeat-fix]: https://github.com/oblitum/caps2esc/issues/1
