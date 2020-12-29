@@ -71,11 +71,11 @@ int main(int argc, char *argv[]) {
         switch (opt) {
             case 'h':
                 return print_usage(stdout, argv[0]), EXIT_SUCCESS;
-            case 't':
-                delay = atoi(optarg);
-                continue;
             case 'm':
                 mode = atoi(optarg);
+                continue;
+            case 't':
+                delay = atoi(optarg);
                 continue;
         }
 
