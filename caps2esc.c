@@ -21,17 +21,17 @@ void print_usage(FILE *stream, const char *program) {
             "usage: %s [-h] [-m mode] [-t delay]\n"
             "\n"
             "options:\n"
-            "    -h        show this message and exit\n"
-            "    -t        delay used for key sequences (default: 20000 microseconds)\n"
-            "    -m mode   0: default\n"
-            "                 - caps as esc/ctrl\n"
-            "                 - esc as caps\n"
-            "              1: minimal\n"
-            "                 - caps as esc/ctrl\n"
-            "              2: useful on 60%% layouts\n"
-            "                 - caps as esc/ctrl\n"
-            "                 - esc as grave accent\n"
-            "                 - grave accent as caps\n",
+            "    -h         show this message and exit\n"
+            "    -t         delay used for key sequences (default: 20000 microseconds)\n"
+            "    -m mode    0: default\n"
+            "                  - caps as esc/ctrl\n"
+            "                  - esc as caps\n"
+            "               1: minimal\n"
+            "                  - caps as esc/ctrl\n"
+            "               2: useful on 60%% layouts\n"
+            "                  - caps as esc/ctrl\n"
+            "                  - esc as grave accent\n"
+            "                  - grave accent as caps\n",
             program);
     // clang-format on
 }
