@@ -75,14 +75,11 @@ example configuration taken from my laptop:
 ```yaml
 SHELL: [zsh, -c]
 ---
-- JOB: mux -c caps2esc
-- JOB:
-    - intercept -g $DEVNODE | mux -o caps2esc
-    - mux -i caps2esc | caps2esc | uinput -d $DEVNODE
+- JOB: mux -c caps2esc; mux -i caps2esc | caps2esc | uinput -d /dev/input/by-path/platform-i8042-serio-0-event-kbd
+- JOB: intercept -g $DEVNODE | mux -o caps2esc
   DEVICE:
     LINK: /dev/input/by-path/platform-i8042-serio-0-event-kbd
-- JOB:
-    - intercept $DEVNODE | mux -o caps2esc
+- JOB: intercept $DEVNODE | mux -o caps2esc
   DEVICE:
     LINK: /dev/input/by-path/platform-i8042-serio-4-event-mouse
 ```
