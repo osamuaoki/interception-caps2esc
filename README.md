@@ -69,8 +69,9 @@ the project's website.
 
 ## Mouse Support
 
-After _Interception Tools_ 0.3.1, `caps2esc` can observe for mouse events. An
-example configuration taken from my laptop:
+After _Interception Tools_ 0.3.2, `caps2esc` can observe ([or
+replace][issue-9-note-2]) mouse events. An example configuration taken from my
+laptop:
 
 ```yaml
 SHELL: [zsh, -c]
@@ -88,7 +89,7 @@ SHELL: [zsh, -c]
 
 For more information on the topic, check the [_Interception Tools_
 README][interception-tools] about usage of the `mux` tool and device specific
-setups, and [this discussion][issue-9-note] for more examples.
+setups, and [this discussion][issue-9-note-1] for more examples.
 
 ## Installation
 
@@ -156,5 +157,6 @@ Copyright © 2017 Francisco Lopes da Silva
 [interception]: https://github.com/oblitum/Interception
 [interception-tools]: https://gitlab.com/interception/linux/tools
 [issue-15-note]: https://gitlab.com/interception/linux/plugins/caps2esc/-/issues/15#note_476593423
-[issue-9-note]: https://gitlab.com/interception/linux/plugins/caps2esc/-/issues/9#note_474942893
+[issue-9-note-1]: https://gitlab.com/interception/linux/plugins/caps2esc/-/issues/9#note_474942893
+[issue-9-note-2]: https://gitlab.com/interception/linux/plugins/caps2esc/-/issues/9#note_476602097
 [key-repeat-fix]: https://github.com/oblitum/caps2esc/issues/1
