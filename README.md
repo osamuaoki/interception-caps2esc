@@ -54,7 +54,7 @@ options:
 ```
 
 `caps2esc` is an [_Interception Tools_][interception-tools] plugin. A suggested
-`udevmon` job configuration is:
+`udevmon` job configuration is ([check here for alternatives][issue-15-note]):
 
 ```yaml
 - JOB: intercept -g $DEVNODE | caps2esc | uinput -d $DEVNODE
@@ -155,5 +155,6 @@ Copyright © 2017 Francisco Lopes da Silva
 [x]: https://www.x.org
 [interception]: https://github.com/oblitum/Interception
 [interception-tools]: https://gitlab.com/interception/linux/tools
+[issue-15-note]: https://gitlab.com/interception/linux/plugins/caps2esc/-/issues/15#note_476593423
 [issue-9-note]: https://gitlab.com/interception/linux/plugins/caps2esc/-/issues/9#note_474942893
 [key-repeat-fix]: https://github.com/oblitum/caps2esc/issues/1
