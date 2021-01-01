@@ -46,25 +46,23 @@ void write_event(const struct input_event *event) {
 }
 
 void write_event_with_mode(struct input_event *event, int mode) {
-    if (event->type == EV_REL || event->type == EV_ABS)
-        return;
-
-    switch (mode) {
-        case 0:
-            if (event->code == KEY_ESC)
-                event->code = KEY_CAPSLOCK;
-            break;
-        case 2:
-            switch (event->code) {
-                case KEY_ESC:
-                    event->code = KEY_GRAVE;
-                    break;
-                case KEY_GRAVE:
+    if (event->type == EV_KEY)
+        switch (mode) {
+            case 0:
+                if (event->code == KEY_ESC)
                     event->code = KEY_CAPSLOCK;
-                    break;
-            }
-            break;
-    }
+                break;
+            case 2:
+                switch (event->code) {
+                    case KEY_ESC:
+                        event->code = KEY_GRAVE;
+                        break;
+                    case KEY_GRAVE:
+                        event->code = KEY_CAPSLOCK;
+                        break;
+                }
+                break;
+        }
     write_event(event);
 }
 
