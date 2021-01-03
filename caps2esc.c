@@ -68,6 +68,7 @@ void write_event_with_mode(struct input_event *event, int mode) {
 
 int main(int argc, char *argv[]) {
     int mode = 0, delay = 20000;
+
     for (int opt; (opt = getopt(argc, argv, "ht:m:")) != -1;) {
         switch (opt) {
             case 'h':
