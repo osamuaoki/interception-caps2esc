@@ -67,7 +67,7 @@ options:
 For more information about the [_Interception Tools_][interception-tools], check
 the project's website.
 
-## Mouse Support
+## Mouse/Touchpad Support
 
 After _Interception Tools_ 0.3.2, `caps2esc` can observe ([or
 replace][issue-9-note-2]) mouse events. An example configuration taken from my
@@ -76,9 +76,8 @@ laptop:
 ```yaml
 SHELL: [zsh, -c]
 ---
-- JOB: >
-    mux -c caps2esc;
-    mux -i caps2esc | caps2esc | uinput -d /dev/input/by-path/platform-i8042-serio-0-event-kbd
+- CMD: mux -c caps2esc
+- JOB: mux -i caps2esc | caps2esc | uinput -c /etc/interception/keyboard.yaml
 - JOB: intercept -g $DEVNODE | mux -o caps2esc
   DEVICE:
     LINK: /dev/input/by-path/platform-i8042-serio-0-event-kbd
@@ -88,8 +87,7 @@ SHELL: [zsh, -c]
 ```
 
 For more information on the topic, check the [_Interception Tools_
-README][interception-tools] about usage of the `mux` tool and device specific
-setups, and [this discussion][issue-9-note-1] for more examples.
+README][interception-tools] about usage of the `mux` tool and hybrid devices.
 
 ## Installation
 
