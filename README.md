@@ -87,7 +87,8 @@ SHELL: [zsh, -c]
 ```
 
 For more information on the topic, check the [_Interception Tools_
-README][interception-tools] about usage of the `mux` tool and hybrid devices.
+README][interception-tools] about usage of the `mux` tool and hybrid virtual
+device configurations.
 
 ## Installation
 
