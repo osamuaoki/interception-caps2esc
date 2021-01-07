@@ -37,7 +37,7 @@ $ cmake --build build
 ```
 caps2esc - transforming the most useless key ever in the most useful one
 
-usage: caps2esc [-h] [-m mode] [-t delay]
+usage: caps2esc [-h | [-m mode] [-t delay]]
 
 options:
     -h        show this message and exit

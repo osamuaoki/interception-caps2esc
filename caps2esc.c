@@ -18,7 +18,7 @@ void print_usage(FILE *stream, const char *program) {
     fprintf(stream,
             "caps2esc - transforming the most useless key ever in the most useful one\n"
             "\n"
-            "usage: %s [-h] [-m mode] [-t delay]\n"
+            "usage: %s [-h | [-m mode] [-t delay]]\n"
             "\n"
             "options:\n"
             "    -h         show this message and exit\n"
