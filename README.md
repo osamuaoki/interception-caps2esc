@@ -54,7 +54,8 @@ options:
 ```
 
 `caps2esc` is an [_Interception Tools_][interception-tools] plugin. A suggested
-`udevmon` job configuration is ([check here for alternatives][issue-15-note]):
+`udevmon` job configuration (check the [_Interception Tools_
+README][interception-tools] for alternatives) is:
 
 ```yaml
 - JOB: intercept -g $DEVNODE | caps2esc | uinput -d $DEVNODE
@@ -69,9 +70,8 @@ the project's website.
 
 ## Mouse/Touchpad Support
 
-After _Interception Tools_ 0.3.2, `caps2esc` can observe ([or
-replace][issue-9-note-2]) mouse events. An example configuration taken from my
-laptop:
+After _Interception Tools_ 0.3.2, `caps2esc` can observe (or replace) mouse
+events. An example configuration taken from my laptop:
 
 ```yaml
 SHELL: [zsh, -c]
@@ -154,7 +154,4 @@ Copyright © 2017 Francisco Lopes da Silva
 [x]: https://www.x.org
 [interception]: https://github.com/oblitum/Interception
 [interception-tools]: https://gitlab.com/interception/linux/tools
-[issue-15-note]: https://gitlab.com/interception/linux/plugins/caps2esc/-/issues/15#note_476593423
-[issue-9-note-1]: https://gitlab.com/interception/linux/plugins/caps2esc/-/issues/9#note_474942893
-[issue-9-note-2]: https://gitlab.com/interception/linux/plugins/caps2esc/-/issues/9#note_476602097
 [key-repeat-fix]: https://github.com/oblitum/caps2esc/issues/1
