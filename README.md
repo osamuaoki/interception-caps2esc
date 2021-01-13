@@ -98,12 +98,6 @@ It's available from [community](https://archlinux.org/packages/community/x86_64/
 $ pacman -S interception-caps2esc
 ```
 
-I don't use Ubuntu and recommend Archlinux instead, as it provides the AUR, so I
-don't maintain PPAs. For more information on Ubuntu/Debian installation check
-this:
-
-- <https://askubuntu.com/questions/979359/how-do-i-install-caps2esc>
-
 ## Caveats
 
 As always, there's always a caveat:
