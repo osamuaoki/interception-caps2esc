@@ -92,6 +92,8 @@ device configurations.
 
 ## Installation
 
+### Archlinux
+
 It's available from [community](https://archlinux.org/packages/community/x86_64/interception-caps2esc/):
 
 ```
