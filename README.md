@@ -100,6 +100,17 @@ It's available from [community](https://archlinux.org/packages/community/x86_64/
 $ pacman -S interception-caps2esc
 ```
 
+### Ubuntu ([independent package][ubuntu])
+
+```
+sudo add-apt-repository ppa:deafmute/interception
+sudo apt install interception-caps2esc
+```
+
+<sub>For debian and other derivatives you can download directly at https://launchpad.net/~deafmute/+archive/ubuntu/interception/+packages.</sub>
+
+[ubuntu]: https://gitlab.com/interception/linux/tools/-/issues/38
+
 ## Caveats
 
 As always, there's always a caveat:
