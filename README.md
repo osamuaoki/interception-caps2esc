@@ -26,7 +26,7 @@ ESC when pressed alone is quite handy, specially in vi.
 ## Building
 
 ```
-$ git clone git@gitlab.com:interception/linux/plugins/caps2esc.git
+$ git clone https://gitlab.com/interception/linux/plugins/caps2esc.git
 $ cd caps2esc
 $ cmake -B build -DCMAKE_BUILD_TYPE=Release
 $ cmake --build build
@@ -62,7 +62,6 @@ README][interception-tools] for alternatives) is:
   DEVICE:
     EVENTS:
       EV_KEY: [KEY_CAPSLOCK, KEY_ESC]
-
 ```
 
 For more information about the [_Interception Tools_][interception-tools], check
