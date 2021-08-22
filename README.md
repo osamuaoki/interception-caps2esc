@@ -25,7 +25,7 @@ ESC when pressed alone is quite handy, specially in vi.
 
 ## Building
 
-```
+```text
 $ git clone https://gitlab.com/interception/linux/plugins/caps2esc.git
 $ cd caps2esc
 $ cmake -B build -DCMAKE_BUILD_TYPE=Release
@@ -34,7 +34,7 @@ $ cmake --build build
 
 ## Execution
 
-```
+```text
 caps2esc - transforming the most useless key ever in the most useful one
 
 usage: caps2esc [-h | [-m mode] [-t delay]]
@@ -95,13 +95,19 @@ device configurations.
 
 It's available from [community](https://archlinux.org/packages/community/x86_64/interception-caps2esc/):
 
-```
+```text
 $ pacman -S interception-caps2esc
+```
+
+### Void Linux
+
+```text
+$ xbps-install -S caps2esc
 ```
 
 ### Ubuntu ([independent package][ubuntu])
 
-```
+```text
 sudo add-apt-repository ppa:deafmute/interception
 sudo apt install interception-caps2esc
 ```
