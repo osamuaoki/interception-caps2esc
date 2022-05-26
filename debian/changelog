@@ -1,3 +1,10 @@
+interception-caps2esc (0.3.2-1) unstable; urgency=medium
+
+  * Refine packaging as non-native standard Debian package.
+  * Manage as dgit-maint-merge workflow.
+
+ -- Osamu Aoki <osamu@debian.org>  Thu, 26 May 2022 23:18:29 +0900
+
 interception-caps2esc (0.3.2~groovy~ppa2) groovy; urgency=low
 
   * Add dependancy on interception-config, which programatically deploys

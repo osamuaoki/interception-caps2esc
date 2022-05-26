@@ -1,0 +1,3 @@
+#!/bin/sh -e
+# check if executable is in the PATH
+caps2esc -h

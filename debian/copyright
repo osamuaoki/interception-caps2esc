@@ -1,5 +1,5 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: interception-caps2esc 
+Upstream-Name: interception-caps2esc
 Upstream-Contact: Francisco Lopes <francisco+interception@nosubstance.me>
 Source: https://gitlab.com/interception/linux/caps2esc.git
 
@@ -17,7 +17,7 @@ License: MIT-Expat
  .
  The above copyright notice and this permission notice shall be
  included in all copies or substantial portions of the Software.
- . 
+ .
  THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND,
  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
  OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
@@ -27,8 +27,8 @@ License: MIT-Expat
  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  OTHER DEALINGS IN THE SOFTWARE.
 
-Files: debian/* 
-Copyright: Copyright 2021 Ethan Djeric <me@ethandjeric.com> 
+Files: debian/*
+Copyright: Copyright 2021 Ethan Djeric <me@ethandjeric.com>
 License: GPL-3+
  This program is free software; you can redistribute it
  and/or modify it under the terms of the GNU General Public
