@@ -1,0 +1,22 @@
+Source: interception-caps2esc
+Section: utils
+Priority: optional
+Maintainer: Ethan Djeric <me@ethandjeric.com>
+Build-Depends: debhelper-compat (= 13),
+ cmake
+Standards-Version: 4.5.0
+Homepage: https://gitlab.com/interception/linux/plugins/caps2esc
+#Vcs-Browser: https://salsa.debian.org/debian/interception-tools
+Vcs-Git: https://gitlab.com/interception/linux/plugins/caps2esc.git
+Rules-Requires-Root: no
+
+Package: interception-caps2esc
+Architecture: amd64
+Depends: ${shlibs:Depends},
+ ${misc:Depends},
+ interception-tools,
+ interception-config
+Description: Rebind Caps Lock to Esc at evdev level using interception-tools.
+  Also allows Caps Lock to be used as Ctrl when keychording. 
+
+

@@ -1,0 +1,13 @@
+#!/bin/sh
+set -e
+
+#DEBHELPER#
+
+# update config 
+interception-config-updater.sh
+
+# restart udevmon service 
+if [ -d /run/systemd/system ]; then
+  deb-systemd-helper restart udevmon.service >/dev/null 
+fi
+
