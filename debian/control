@@ -11,7 +11,7 @@ Rules-Requires-Root: no
 
 Package: interception-caps2esc
 Architecture: amd64
-Depends: interception-config, ${misc:Depends}, ${shlibs:Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
 Recommends: interception-tools
 Description: Rebind Caps Lock to Esc at evdev level using interception-tools
  This rebind Caps Lock to Esc at evdev level using interception-tools and
