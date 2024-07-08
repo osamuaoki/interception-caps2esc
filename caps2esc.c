@@ -6,11 +6,13 @@
 
 // clang-format off
 const struct input_event
-syn       = {.type = EV_SYN , .code = SYN_REPORT   , .value = 0},
-esc_up    = {.type = EV_KEY , .code = KEY_ESC      , .value = 0},
-ctrl_up   = {.type = EV_KEY , .code = KEY_LEFTCTRL , .value = 0},
-esc_down  = {.type = EV_KEY , .code = KEY_ESC      , .value = 1},
-ctrl_down = {.type = EV_KEY , .code = KEY_LEFTCTRL , .value = 1};
+syn        = {.type = EV_SYN , .code = SYN_REPORT   , .value = 0},
+esc_up     = {.type = EV_KEY , .code = KEY_ESC      , .value = 0},
+ctrl_up    = {.type = EV_KEY , .code = KEY_LEFTCTRL , .value = 0},
+super_up   = {.type = EV_KEY , .code = KEY_LEFTMETA , .value = 0},
+esc_down   = {.type = EV_KEY , .code = KEY_ESC      , .value = 1},
+ctrl_down  = {.type = EV_KEY , .code = KEY_LEFTCTRL , .value = 1},
+super_down = {.type = EV_KEY , .code = KEY_LEFTMETA , .value = 1};
 // clang-format on
 
 void print_usage(FILE *stream, const char *program) {
@@ -18,11 +20,12 @@ void print_usage(FILE *stream, const char *program) {
     fprintf(stream,
             "caps2esc - transforming the most useless key ever in the most useful one\n"
             "\n"
-            "usage: %s [-h | [-m mode] [-t delay]]\n"
+            "usage: %s [-h -s | [-m mode] [-t delay]]\n"
             "\n"
             "options:\n"
             "    -h         show this message and exit\n"
             "    -t         delay used for key sequences (default: 20000 microseconds)\n"
+            "    -s         switch with super instead of ctrl\n"
             "    -m mode    0: default\n"
             "                  - caps as esc/ctrl\n"
             "                  - esc as caps\n"
@@ -68,8 +71,9 @@ void write_event_with_mode(struct input_event *event, int mode) {
 
 int main(int argc, char *argv[]) {
     int mode = 0, delay = 20000;
+	unsigned int super = 0;
 
-    for (int opt; (opt = getopt(argc, argv, "ht:m:")) != -1;) {
+    for (int opt; (opt = getopt(argc, argv, "hst:m:")) != -1;) {
         switch (opt) {
             case 'h':
                 return print_usage(stdout, argv[0]), EXIT_SUCCESS;
@@ -79,13 +83,16 @@ int main(int argc, char *argv[]) {
             case 't':
                 delay = atoi(optarg);
                 continue;
+            case 's':
+                super = 1;
+                continue;
         }
 
         return print_usage(stderr, argv[0]), EXIT_FAILURE;
     }
 
     struct input_event input;
-    enum { START, CAPSLOCK_HELD, CAPSLOCK_IS_CTRL } state = START;
+    enum { START, CAPSLOCK_HELD, CAPSLOCK_IS_MODIFIER } state = START;
 
     setbuf(stdin, NULL), setbuf(stdout, NULL);
 
@@ -118,17 +125,25 @@ int main(int argc, char *argv[]) {
                     }
                 } else if ((input.type == EV_KEY && input.value == 1) ||
                            input.type == EV_REL || input.type == EV_ABS) {
-                    write_event(&ctrl_down);
+                    if (super) {
+                        write_event(&super_down);
+                    } else {
+                        write_event(&ctrl_down);
+                    }
                     write_event(&syn);
                     usleep(delay);
                     write_event_with_mode(&input, mode);
-                    state = CAPSLOCK_IS_CTRL;
+                    state = CAPSLOCK_IS_MODIFIER;
                 } else
                     write_event_with_mode(&input, mode);
                 break;
-            case CAPSLOCK_IS_CTRL:
+            case CAPSLOCK_IS_MODIFIER:
                 if (input.type == EV_KEY && input.code == KEY_CAPSLOCK) {
-                    input.code = KEY_LEFTCTRL;
+					if (super) {
+                        input.code = KEY_LEFTMETA;
+                    } else {
+                        input.code = KEY_LEFTCTRL;
+                    }
                     write_event(&input);
                     if (input.value == 0)
                         state = START;
